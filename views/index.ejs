@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Desktop Application</title>
+    <!-- CSS Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #f4f6ff;
+      }
+      .center {
+        display: inline-block;
+      }
+      .position {
+        position: absolute;
+        top: 43%;
+        left: 20%;
+        width: 80%;
+      }
+      .user-message {
+        margin: 10px 0 10px 20%;
+        width: 30%;
+        border: 1px solid #4771fa;
+        padding: 0.5rem;
+        border-radius: 3px;
+        background: #b9c9ff;
+        text-align: center;
+      }
+
+      .user-message--error {
+        border-color: red;
+        background: rgb(255, 176, 176);
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Translator</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/dictionary"
+              ><button type="button" class="btn btn-outline-light">
+                Dictionary
+              </button></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/addDictionary"
+              ><button type="button" class="btn btn-outline-light">
+                Add Dictionary
+              </button></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="center position">
+      <% if (errorMessage) { %>
+      <div class="user-message user-message--error"><%= errorMessage %></div>
+      <% } %>
+      <form action="/" method="POST">
+        <div class="form-group center" style="width: 35%">
+          <textarea
+            id="copyUrduText"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="8"
+            placeholder="اردو"
+            name="urdu"
+            lang="ur"
+          >
+<%=userInput?userInput:''%></textarea
+          >
+        </div>
+        <div class="form-group center" style="width: 35%">
+          <textarea
+            id="copyRomanUrduText"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="8"
+            placeholder="roman-urdu"
+            name="romanUrdu"
+            lang="ur"
+          >
+<%=response?response:''%></textarea
+          >
+        </div>
+        <button
+          type="submit"
+          class="btn btn-outline-success"
+          style="display: block; margin-left: 31%"
+        >
+          Convert
+        </button>
+      </form>
+    </div>
+
+    <script>
+      let copyUrduText = document.getElementById("copyUrduText");
+      let copyRomanUrduText = document.getElementById("copyRomanUrduText");
+      copyUrduText.addEventListener("click", copyUrdu);
+      copyRomanUrduText.addEventListener("click", copyRomanUrdu);
+      function copyUrdu() {
+        if (copyUrduText.value) {
+          copyUrduText.select();
+          document.execCommand("copy");
+        }
+      }
+      function copyRomanUrdu() {
+        if (copyRomanUrduText.value) {
+          copyRomanUrduText.select();
+          document.execCommand("copy");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>dictionary</title>
+     <!-- CSS Stylesheets -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <style>
+    .user-message {
+    margin:auto;
+    margin-top:10%;
+    width: 30%;
+    border: 1px solid #4771fa;
+    padding: 0.5rem;
+    border-radius: 3px;
+    background: #b9c9ff;
+    text-align: center;
+  }
+  
+  .user-message--error {
+    border-color: red;
+    background: rgb(255, 176, 176);
+    color: red;
+  }
+
+      body{
+        background-color: #f4f6ff;
+      }
+     
+  </style>
+ </head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Translator</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/dictionary"><button type="button" class="btn btn-outline-light">Dictionary</button></a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/addDictionary"><button type="button" class="btn btn-outline-light">Add Dictionary</button></a>
+              </li>
+          </ul>
+      
+        </div>
+      </nav> 
+      <% if (errorMessage) { %>
+        <div class="user-message user-message--error"><%= errorMessage %></div>
+    <% } %>
+      <form class="form-group" action="/addDictionary" method="POST" style="max-width: 500px;
+        margin: 5% auto 40%;">
+            <div class="form-group" lang="ur">
+                <label for="Email" lang="ur">Urdu</label>
+                <input type="text"  name="urdu"class="form-control" id="Email" aria-describedby="emailHelp" required lang="ur">
+               
+              </div>
+              <div class="form-group">
+                <label for="Password">Roman Urdu</label>
+                <input type="text"  name="romanUrdu"class="form-control" id="password" required >
+               
+              </div>
+
+         
+            <button class="btn btn-primary" type="submit">Add</button>
+            
+            
+         
+            
+        </form>
+</body>
+</html>
